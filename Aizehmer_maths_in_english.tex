@@ -1,0 +1,354 @@
+\documentclass[12pt,a4paper]{article}
+
+% Language and encoding
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+% Mathematics and layout
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{hyperref}
+
+% Hyperlinks
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+% Python code formatting
+\lstdefinestyle{pythonstyle}{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red!70!black},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    frame=single,
+    tabsize=4
+}
+
+\lstset{style=pythonstyle}
+
+% Mathematical environments
+\newtheorem{axiom}{Axiom}
+\newtheorem{theorem}{Theorem}
+
+\title{\textbf{Alzheimer Maths}\\
+\large The Mathematics of Alzheimer}
+\author{Yami}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This paper presents the foundations, theorems, and a computer
+simulation of the system called \textit{Alzheimer Maths}.
+\end{abstract}
+
+\section{Foundations of the System: Axioms}
+
+\subsection{The Initial Set}
+
+The universe is initialized with a finite inventory containing the
+integers from $1$ to $9$, their negatives from $-1$ to $-9$, their
+reciprocals from $1$ to $\frac{1}{9}$, and their negative reciprocals.
+
+The number $1$ appearing among the reciprocals is considered a
+different iteration from the integer $1$, but behaves as $1$.
+
+\subsection{Axiom 1: Destructive Consumption}
+
+Every mathematical operation permanently consumes its operands.
+A number that is used is destroyed and no longer exists, unless it
+is recreated as the result of an operation.
+
+The available operations are multiplication and addition. They
+operate as they do within the ZFC system.
+
+\subsection{Axiom 2: Multiplicity}
+
+The same number may exist in several distinct iterations (tokens)
+within the inventory.
+
+\subsection{Axiom 3: Operation $P$ (Loss)}
+
+The operation $P(x)$ consumes the token $x$ without generating
+a new result. It is pure destruction.
+
+\subsection{Axiom 4: Operation $R$ (Reset)}
+
+The operation $R$ clears the current inventory and resets the system
+exactly to its initial state.
+
+\subsection{Axiom 5: No Reuse of a Single Token}
+
+A term that exists in only one iteration cannot be used twice in
+the same operation.
+
+For example, if the set contains only the tokens $[1,0]$, the
+operation
+\[
+1-1
+\]
+is forbidden because only one token with value $1$ is available.
+
+\section{Fundamental Theorems}
+
+\subsection{Theorem 1: The Number of Numbers}
+
+\textit{``There will always be fewer numbers in the system than
+there were at the beginning.''}
+
+\paragraph{Proof.}
+Each binary operation ($+$, $\times$, $-$, $\div$) consumes two
+tokens and generates only one. The net change is therefore
+$-1$ token.
+
+Each operation $P$ consumes one token and generates none.
+Its net change is also $-1$ token.
+
+The total number of tokens therefore strictly decreases at every
+step.
+
+\subsection{Theorem 2: The End of the World}
+
+\textit{``If you start with a set of $N$ numbers, you can perform
+at most $N$ operations in this system, and the $N$-th operation
+other than $R$ will always be a $P$.''}
+
+\paragraph{Proof.}
+According to Theorem 1, each operation removes exactly one token
+from the system.
+
+After $N-1$ operations, the inventory contains only one token:
+\[
+N-(N-1)=1.
+\]
+
+At this point, binary operations are impossible because there are
+not enough operands. The only remaining legal action, other than
+$R$, is the unary operation $P$.
+
+The $N$-th operation that is not an $R$ must therefore be an
+extinction through $P$.
+
+\subsection{Theorem 3: The Maximum Possible Number}
+
+Given that, for two positive integers $a$ and $b$ different from $1$,
+\[
+a \times b \geq a+b,
+\]
+the maximum possible number in our set is obtained by multiplying
+the positive integers and then the appropriate negative factors.
+
+At most eight negative factors whose absolute values exceed $1$
+can be used:
+\[
+(-9)\times(-8)\times(-7)\times(-6)\times(-5)
+\times(-4)\times(-3)\times(-2)=9!.
+\]
+
+We therefore obtain:
+\[
+(9!)^2.
+\]
+
+We can add to this number the sum of the positive fractions,
+from $\frac{1}{1}$ to $\frac{1}{9}$.
+
+Thus:
+\[
+(9!)^2
+\left(
+1+\frac12+\frac13+\frac14+\frac15+
+\frac16+\frac17+\frac18+\frac19
+\right)^2.
+\]
+
+For simplicity, let us call this number \textit{Max}:
+\[
+\boxed{
+\mathrm{Max}=(9!)^2
+\left(
+1+\frac12+\frac13+\frac14+\frac15+
+\frac16+\frac17+\frac18+\frac19
+\right)^2
+}
+\]
+
+Any other method is non-optimal: adding negative terms reduces the
+value, multiplying fractions reduces the value, and adding positive
+values produces numbers smaller than multiplying them.
+
+This considers the set of possible strategies by examining each
+group separately.
+
+\paragraph{For the numbers from $1$ to $9$.}
+They can be added or multiplied. Since
+\[
+a\times b\geq a+b,
+\]
+multiplying them produces a larger number.
+
+\paragraph{For negative numbers.}
+They can be added or multiplied. Adding them produces more negative
+numbers. Even if we try to add them and then multiply by $-1$, we
+will create a number smaller than a large product.
+
+To create an even larger number using the first $9!$, the optimal
+choice is to multiply them again.
+
+\paragraph{For positive fractions.}
+Since they lie between $-1$ and $1$, multiplying them always
+produces smaller numbers. Adding them is the optimal choice.
+
+Their sum will be greater than $1$, so multiplication is then
+the optimal choice.
+
+\paragraph{For negative fractions.}
+The strategy follows the same logic as for the fractions: their sum
+is used as a term in a product. To transform the negative sum into
+a positive term in the product, we use the $-1$ left over from
+the negative terms.
+
+The resulting terms are greater than $1$. The optimal way to
+combine them is therefore multiplication.
+
+We obtain:
+\[
+\boxed{\mathrm{Max}=\ldots}
+\]
+
+\section{Python Simulation}
+
+\subsection{Checking Token Multiplicity}
+
+The \texttt{T2valide} function checks that an operation does not
+reuse a single token twice.
+
+\begin{lstlisting}
+def T2valide(t1, t2, nombres):
+    if t1 != t2:
+        return True
+    else:
+        n = 0
+
+        for i in nombres:
+            if i == t1:
+                n += 1
+
+        return n > 1
+\end{lstlisting}
+
+\subsection{Simulation Program}
+
+\begin{lstlisting}
+print("Type stop to end the simulation")
+
+Run = True
+New_world = True
+
+
+def T2valide(t1, t2, nombres):
+    if t1 != t2:
+        return True
+
+    n = 0
+
+    for i in nombres:
+        if i == t1:
+            n += 1
+
+    return n > 1
+
+
+while Run:
+
+    if New_world:
+        nombres = [
+            # Positive integers
+            1.0, 2.0, 3.0, 4.0, 5.0,
+            6.0, 7.0, 8.0, 9.0,
+
+            # Negative integers
+            -1.0, -2.0, -3.0, -4.0, -5.0,
+            -6.0, -7.0, -8.0, -9.0,
+
+            # Positive fractions
+            1.0, 1/2, 1/3, 1/4, 1/5,
+            1/6, 1/7, 1/8, 1/9,
+
+            # Negative fractions
+            -1.0, -1/2, -1/3, -1/4, -1/5,
+            -1/6, -1/7, -1/8, -1/9
+        ]
+
+        New_world = False
+        print("New inventory:", nombres)
+
+    else:
+        operation = input(
+            "Operation (+, *, P, R, stop): "
+        )
+
+        if operation == "stop":
+            Run = False
+
+        elif operation == "R":
+            New_world = True
+
+        elif operation == "P":
+            T1 = float(input("Number to destroy: "))
+
+            if T1 in nombres:
+                nombres.remove(T1)
+                print("Inventory:", nombres)
+            else:
+                print("Invalid operation: token not found.")
+
+        elif operation in ("+", "*"):
+            T1 = float(input("First number: "))
+
+            if T1 not in nombres:
+                print("First token not found.")
+                continue
+
+            T2 = float(input("Second number: "))
+
+            if T2 not in nombres or not T2valide(
+                T1, T2, nombres
+            ):
+                print("Invalid operation: tokens unavailable.")
+                continue
+
+            # Consume both tokens
+            nombres.remove(T1)
+            nombres.remove(T2)
+
+            # Create the result
+            if operation == "+":
+                resultat = T1 + T2
+            else:
+                resultat = T1 * T2
+
+            nombres.append(resultat)
+
+            print("Result:", resultat)
+            print("Inventory:", nombres)
+
+        else:
+            print("Unsupported operation.")
+\end{lstlisting}
+
+\end{document}
