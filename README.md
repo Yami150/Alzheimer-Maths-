@@ -1,28 +1,20 @@
-# Alzheimer-Maths-
-A system of mathematics i did to better understand axioms and logic
 \documentclass[12pt,a4paper]{article}
 
-% Encodage et langue
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[french]{babel}
-
-% Mathématiques et mise en page
+\usepackage[english]{babel}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage[a4paper,margin=2.5cm]{geometry}
 \usepackage{xcolor}
 \usepackage{listings}
 \usepackage{hyperref}
-\usepackage{enumitem}
 
-% Configuration des liens
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,
     urlcolor=blue
 }
 
-% Configuration du code Python
 \lstdefinestyle{pythonstyle}{
     language=Python,
     basicstyle=\ttfamily\small,
@@ -41,12 +33,7 @@ A system of mathematics i did to better understand axioms and logic
 
 \lstset{style=pythonstyle}
 
-% Environnements mathématiques
-\newtheorem{axiome}{Axiome}
-\newtheorem{theoreme}{Théorème}
-
-\title{\textbf{Les Mathématiques d'Alzheimer}\\
-\large Alzheimer Maths}
+\title{\textbf{Alzheimer Maths}}
 \author{Yami}
 \date{}
 
@@ -54,123 +41,121 @@ A system of mathematics i did to better understand axioms and logic
 
 \maketitle
 
-\begin{abstract}
-Ce document présente les fondations, les théorèmes et une simulation
-informatique du système appelé \textit{Les Mathématiques d'Alzheimer}.
-\end{abstract}
+\section{Foundations of the System (Axioms)}
 
-\section{Les fondations du système : axiomes}
+\subsection{The Initial Set}
 
-\subsection{Le set de départ}
+The universe is initialized with a finite inventory containing the
+integers $[1,\ldots,9]$, their negatives $[-1,\ldots,-9]$, and their
+reciprocal fractions $[1,\ldots,1/9]$.
 
-L'univers est initialisé avec un inventaire fini contenant les entiers
-de $1$ à $9$, leurs opposés de $-1$ à $-9$, ainsi que leurs fractions
-inverses, de $1$ à $\frac{1}{9}$, et leurs fractions inverses négatives.
+The $1$ here is considered a different iteration from $1$, but acts
+as $1$.
 
-Le nombre $1$ présent dans les fractions inverses est considéré comme
-une itération différente du nombre $1$ entier, mais agit comme $1$.
+And their negative reciprocal fractions.
 
-\subsection{Axiome 1 : consommation destructive}
+\subsection{Axiom 1: Destructive Consumption}
 
-Toute opération mathématique consomme définitivement ses opérandes.
-Un nombre utilisé est détruit et n'existe plus, sauf s'il est recréé
-par le résultat d'une opération.
+Every mathematical operation permanently consumes its operands.
+A number that is used is destroyed and no longer exists, unless it
+is recreated by the result of an operation.
 
-Les opérations qui existent sont la multiplication et l'addition.
-Elles agissent comme dans le système ZFC.
+The available operations are multiplication and addition, and they
+act as they do under the ZFC system.
 
-\subsection{Axiome 2 : multiplicité}
+\subsection{Axiom 2: Multiplicity}
 
-Un même nombre peut exister en plusieurs itérations (jetons)
-distinctes dans l'inventaire.
+The same number can exist in several distinct iterations (tokens)
+within the inventory.
 
-\subsection{Axiome 3 : opération $P$ (perte)}
+\subsection{Axiom 3: Operation P (Loss)}
 
-L'opération $P(x)$ consomme le jeton $x$ sans générer de nouveau
-résultat. C'est une destruction pure.
+The operation $P(x)$ consumes the token $x$ without generating
+a new result. It is pure destruction.
 
-\subsection{Axiome 4 : opération $R$ (reset)}
+\subsection{Axiom 4: Operation R (Reset)}
 
-L'opération $R$ purge l'inventaire courant et réinitialise le système
-exactement à son état de départ.
+The operation $R$ clears the current inventory and resets the system
+exactly to its initial state.
 
-\subsection{Axiome 5 : interdiction de réutiliser un jeton}
+\subsection{Axiom 5}
 
-Un même terme, s'il ne possède qu'une seule itération, ne peut pas
-être utilisé deux fois dans la même opération.
+A term, if it has only one iteration, cannot be used twice in the
+same operation.
 
-Par exemple, si l'ensemble contient seulement les jetons $[1,0]$,
-l'opération
+For example, if the set contains only $[1,0]$, the operation
 \[
 1-1
 \]
-est interdite, car un seul jeton de valeur $1$ est disponible.
+is forbidden.
 
-\section{Les théorèmes fondamentaux}
+\section{Fundamental Theorems}
 
-\subsection{Théorème 1 : le nombre de nombres}
+\subsection{Theorem 1: The Number of Numbers}
 
-\textit{« Vous aurez toujours moins de nombres dans le système
-qu'au départ. »}
+\textit{``There will always be fewer numbers in the system than
+at the beginning.''}
 
-\paragraph{Démonstration.}
-Chaque opération binaire ($+$, $\times$, $-$, $\div$) consomme deux
-jetons pour n'en générer qu'un seul. Le bilan est donc de $-1$ jeton.
+\paragraph{Proof.}
 
-Chaque opération $P$ consomme un jeton pour en générer zéro.
-Le bilan est également de $-1$ jeton.
+Each binary operation ($+$, $\times$, $-$, $\div$) consumes two
+tokens to generate only one (net change: $-1$ token).
 
-La quantité globale de jetons décroît strictement à chaque étape.
+Each operation $P$ consumes one token and generates zero
+(net change: $-1$ token).
 
-\subsection{Théorème 2 : la fin du monde}
+The total number of tokens strictly decreases at every step.
 
-\textit{« Si vous commencez avec un ensemble de $N$ nombres, vous aurez
-au maximum $N$ opérations dans ce système, et la $N$-ième opération
-différente de $R$ sera toujours un $P$. »}
+\subsection{Theorem 2: The End of the World}
 
-\paragraph{Démonstration.}
-D'après le théorème 1, chaque opération retire exactement un jeton
-du système.
+\textit{``If you start with a set of $N$ numbers, you will have at
+most $N$ operations in this system, and the $N$-th operation
+different from $R$ will always be a $P$.''}
 
-Après $N-1$ opérations, l'inventaire ne contient plus qu'un seul et
-unique jeton :
+\paragraph{Proof.}
+
+According to Theorem 1, each operation removes exactly one token
+from the system.
+
+After $N-1$ operations, the inventory contains only one token:
 \[
 N-(N-1)=1.
 \]
 
-À cet état, les opérations binaires sont impossibles par manque
-d'opérandes. La seule action légale restante, différente de $R$,
-est l'opération unitaire $P$.
+At this point, binary operations are impossible due to a lack of
+operands. The only remaining legal action different from $R$ is
+the unary operation $P$.
 
-La $N$-ième opération qui n'est pas un $R$ est donc fatalement une
-extinction par $P$.
+The $N$-th operation that is not an $R$ is therefore inevitably
+an extinction through $P$.
 
-\subsection{Théorème 3 : nombre maximal possible}
+\subsection{Theorem 3: Maximum Possible Number}
 
-Sachant que, pour deux entiers positifs différents de $1$, $a$ et $b$,
-on a :
+Knowing that, for two positive integers $a$ and $b$ different from
+$1$, we have
 \[
-a \times b \geq a+b,
+a*b\geq a+b,
 \]
-le nombre maximal possible dans notre set est obtenu en multipliant
-les entiers positifs, puis les facteurs négatifs appropriés.
+the maximum possible number in our set is
 
-On peut utiliser au maximum huit facteurs négatifs de valeur absolue
-supérieure à $1$ :
 \[
-(-9)\times(-8)\times(-7)\times(-6)\times(-5)
-\times(-4)\times(-3)\times(-2)=9!.
+9! + \text{an even number of negative factors multiplied together,
+greater than }1.
 \]
 
-On a donc :
+Here, we can use at most eight negative factors:
+\[
+(-9)(-8)(-7)(-6)(-5)(-4)(-3)(-2)=9!.
+\]
+
+We therefore have
 \[
 (9!)^2.
 \]
 
-On peut ajouter à ce nombre la somme des fractions positives,
-de $\frac{1}{1}$ à $\frac{1}{9}$.
+And we can add to this number the sum of the decimals, from $1$ to
+$\frac{1}{9}$:
 
-Ainsi :
 \[
 (9!)^2
 \left(
@@ -179,10 +164,52 @@ Ainsi :
 \right)^2.
 \]
 
-Appelons ce nombre, par simplicité, \textit{Max} :
+Let us call this number, for simplicity, Max.
+
+Any other method is non-optimal. Adding the negative terms reduces
+the value, multiplying the fractions reduces the value, and adding
+positive values creates numbers smaller than multiplying them.
+
+This considers the set of possible strategies, taking each group
+separately.
+
+For the numbers from $1$ to $9$, we can add or multiply them.
+Since
+\[
+a*b\geq a+b,
+\]
+multiplying them creates a larger number.
+
+For negative numbers, we can add or multiply them. Adding them
+creates more negative numbers. Even if we try to add them and then
+multiply them by $-1$, we will create a number smaller than a large
+multiplication.
+
+To create an even larger number with the first $9!$, the optimal
+choice is to multiply them again.
+
+For positive fractions, knowing that they are between $-1$ and $1$,
+multiplying them will always create smaller numbers. Adding them is
+the optimal choice.
+
+Their sum will be greater than $1$, so multiplication is then
+the optimal choice.
+
+For negative fractions, the strategy follows the same logic as for
+fractions: a sum is used as a term in a product. To transform the
+negative sum into a positive term in a product, we use the $-1$
+left over from the negative terms.
+
+The set of terms created is greater than $1$. The optimal way to
+combine them is therefore multiplication.
+
+We obtain:
+
 \[
 \boxed{
-\mathrm{Max}=(9!)^2
+\mathrm{Max}
+=
+(9!)^2
 \left(
 1+\frac12+\frac13+\frac14+\frac15+
 \frac16+\frac17+\frac18+\frac19
@@ -190,58 +217,33 @@ Appelons ce nombre, par simplicité, \textit{Max} :
 }
 \]
 
-Tout autre moyen est non optimal : additionner les termes négatifs
-réduit la valeur, multiplier les fractions réduit la valeur, et
-additionner des valeurs positives crée des nombres moins grands que
-leur multiplication.
-
-Il s'agit de l'ensemble des stratégies possibles, en prenant les
-ensembles terme par terme.
-
-\paragraph{Pour les nombres de $1$ à $9$.}
-On peut les additionner ou les multiplier. Or, puisque
+Since
 \[
-a\times b\geq a+b,
+1+\frac12+\frac13+\frac14+\frac15+
+\frac16+\frac17+\frac18+\frac19
+=
+\frac{7129}{2520},
 \]
-les multiplier crée alors un nombre plus grand.
-
-\paragraph{Pour les nombres négatifs.}
-On peut les additionner ou les multiplier. Les additionner crée des
-nombres plus négatifs. Même si l'on essaie de les additionner puis
-de les multiplier par $-1$, on créera un nombre moins grand qu'une
-grande multiplication.
-
-Pour créer un nombre encore plus grand avec le premier $9!$,
-l'optimal est de les multiplier à nouveau.
-
-\paragraph{Pour les fractions positives.}
-Sachant qu'elles sont comprises entre $-1$ et $1$, les multiplier
-créera toujours des nombres plus petits. Les additionner est le
-choix optimal.
-
-Leur somme sera supérieure à $1$ ; multiplier est alors le choix
-optimal.
-
-\paragraph{Pour les fractions négatives.}
-La stratégie utilisant la logique des fractions consiste en une somme
-utilisée comme terme d'un produit. Pour transformer la somme négative
-en un terme positif dans un produit, on utilise le $-1$ laissé par
-les termes négatifs.
-
-L'ensemble des termes créés est supérieur à $1$. La manière optimale
-de les associer est alors la multiplication.
-
-On obtient alors :
+we have
 \[
-\boxed{\mathrm{Max}=\ldots}
+\boxed{
+\mathrm{Max}
+=
+(362880)^2
+\left(\frac{7129}{2520}\right)^2
+}
 \]
 
-\section{Simulation Python}
+Numerically,
+\[
+\boxed{
+\mathrm{Max}\approx 1.0538\times 10^{12}
+}
+\]
 
-\subsection{Vérification de la multiplicité des jetons}
+\section{Python Simulation}
 
-La fonction \texttt{T2valide} vérifie qu'une opération ne réutilise
-pas un jeton unique deux fois.
+\subsection{Checking Token Multiplicity}
 
 \begin{lstlisting}
 def T2valide(t1, t2, nombres):
@@ -249,18 +251,20 @@ def T2valide(t1, t2, nombres):
         return True
     else:
         n = 0
-
         for i in nombres:
             if i == t1:
                 n += 1
 
-        return n > 1
+        if n > 1:
+            return True
+
+    return False
 \end{lstlisting}
 
-\subsection{Programme de simulation}
+\subsection{Simulation Program}
 
 \begin{lstlisting}
-print("On peut arreter la simulation en tapant stop")
+print("Type stop to end the simulation")
 
 Run = True
 New_world = True
@@ -283,29 +287,29 @@ while Run:
 
     if New_world:
         nombres = [
-            # Entiers positifs
+            # Positive integers
             1.0, 2.0, 3.0, 4.0, 5.0,
             6.0, 7.0, 8.0, 9.0,
 
-            # Entiers negatifs
+            # Negative integers
             -1.0, -2.0, -3.0, -4.0, -5.0,
             -6.0, -7.0, -8.0, -9.0,
 
-            # Fractions positives
+            # Positive fractions
             1.0, 1/2, 1/3, 1/4, 1/5,
             1/6, 1/7, 1/8, 1/9,
 
-            # Fractions negatives
+            # Negative fractions
             -1.0, -1/2, -1/3, -1/4, -1/5,
             -1/6, -1/7, -1/8, -1/9
         ]
 
         New_world = False
-        print("Nouvel inventaire :", nombres)
+        print("New inventory:", nombres)
 
     else:
         operation = input(
-            "L'operation a effectuer (+, *, P, R, stop) : "
+            "Operation to perform (+, *, P, R, stop): "
         )
 
         if operation == "stop":
@@ -315,34 +319,34 @@ while Run:
             New_world = True
 
         elif operation == "P":
-            T1 = float(input("Nombre a detruire : "))
+            T1 = float(input("Number to destroy: "))
 
             if T1 in nombres:
                 nombres.remove(T1)
-                print("Inventaire :", nombres)
+                print("Inventory:", nombres)
             else:
-                print("Operation impossible : jeton absent.")
+                print("Invalid operation: token not found.")
 
         elif operation in ("+", "*"):
-            T1 = float(input("Premier nombre : "))
+            T1 = float(input("First number: "))
 
             if T1 not in nombres:
-                print("Premier jeton absent.")
+                print("First token not found.")
                 continue
 
-            T2 = float(input("Deuxieme nombre : "))
+            T2 = float(input("Second number: "))
 
             if T2 not in nombres or not T2valide(
                 T1, T2, nombres
             ):
-                print("Operation impossible : jetons indisponibles.")
+                print("Invalid operation: tokens unavailable.")
                 continue
 
-            # Consommation des deux jetons
+            # Consume both tokens
             nombres.remove(T1)
             nombres.remove(T2)
 
-            # Creation du resultat
+            # Create the result
             if operation == "+":
                 resultat = T1 + T2
             else:
@@ -350,11 +354,11 @@ while Run:
 
             nombres.append(resultat)
 
-            print("Resultat :", resultat)
-            print("Inventaire :", nombres)
+            print("Result:", resultat)
+            print("Inventory:", nombres)
 
         else:
-            print("Operation non acceptee.")
+            print("Unsupported operation.")
 \end{lstlisting}
 
 \end{document}
